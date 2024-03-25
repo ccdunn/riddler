@@ -24,6 +24,7 @@ def grow_lut(lut: np.ndarray):
 
 
 def build_lut(N: int):
+    # build a lookup table of strongest possible opponents for 2^N teams in a bracket-style knockout tournament
     if N < 0:
         raise ValueError(f'Negative N: {N}')
     if N == 0:

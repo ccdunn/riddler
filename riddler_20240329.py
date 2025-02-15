@@ -59,21 +59,19 @@ def min_steps_to_volume(states, n_steps):
 if __name__ == '__main__':
     sizes = np.array([[3], [10]], dtype=int)
     states, n_steps = rec_prop_states(sizes)
-    print(states)
-    print(n_steps)
     min_steps = min_steps_to_volume(states, n_steps)
-    print(min_steps)
-    print(np.argmax(min_steps))
+    target = 5
+    print(f'Minimum steps to achieve {target} from {sizes[0]} and {sizes[1]} vessels: {min_steps[5]}')
 
     max_volume = 100
     min_stepss = np.zeros([max_volume + 1, max_volume + 1], dtype=int)
     for i in range(max_volume + 1):
-        print(i)
         sizes = np.array([[i], [max_volume]], dtype=int)
         states, n_steps = rec_prop_states(sizes)
         min_stepss[i, :] = min_steps_to_volume(states, n_steps)
 
-    print(min_stepss)
+    print(f'Most steps from {93} and {max_volume} vessels: {np.max(min_stepss[93, :])} steps to achieve {np.argmax(min_stepss[93, :])} target')
+
     min_stepss = min_stepss.astype(float)
     min_stepss[min_stepss == -1] = np.nan
     plt.figure(figsize=[16, 16])
@@ -82,7 +80,6 @@ if __name__ == '__main__':
     plt.imshow(min_stepss, cmap=cmap)
     max_steps = np.nanmax(min_stepss, axis=1)
     global_max_steps = np.nanmax(max_steps)
-    print(max_steps)
     new_global = True
     for i in range(len(max_steps)):
         if max_steps[i] < global_max_steps:

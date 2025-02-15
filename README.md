@@ -1,2 +1,7 @@
-https://stackoverflow.com/questions/70830755/intel-mkl-fatal-error-this-system-does-not-meet-the-minimum-requirements-for-us
-conda create -n riddler numpy matplotlib scipy mkl<2022
+Create conda environment from scratch
+`conda create -n riddler python=3.11 numpy matplotlib scipy`
+`conda env export --from-history > environment.yml`
+
+Create conda environment from YAML file
+`conda create -f environment.yml`
+

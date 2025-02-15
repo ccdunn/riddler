@@ -1,0 +1,10 @@
+name: riddler
+channels:
+  - https://repo.anaconda.com/pkgs/main
+  - https://repo.anaconda.com/pkgs/r
+dependencies:
+  - scipy
+  - numpy
+  - python=3.11
+  - matplotlib
+prefix: /Users/charles/miniconda3/envs/riddler
